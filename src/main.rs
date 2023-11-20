@@ -5,6 +5,7 @@ use winit::{
 };
 
 fn main() {
+    env_logger::init();
     let event_loop = EventLoop::new().unwrap();
     let window = WindowBuilder::new().build(&event_loop).unwrap();
 
@@ -21,14 +22,12 @@ fn main() {
             },
             Event::AboutToWait => {
                 // Application update code.
-                println!("Updating application...");
                 window.request_redraw();
             },
             Event::WindowEvent {
                 event: WindowEvent::RedrawRequested,
                 ..
             } => {
-                println!("Redrawing application");
                 // Redraw the application.
             },
             _ => ()
