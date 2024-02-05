@@ -7,4 +7,5 @@ edition = "2021"
 
 [dependencies]
 simple_logger = "4.3.3"
+wgpu = "0.19.1"
 winit = "0.29.10"
