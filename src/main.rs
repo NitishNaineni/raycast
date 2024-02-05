@@ -16,7 +16,6 @@ fn main() -> Result<(), impl std::error::Error> {
         .unwrap();
 
     event_loop.run(move |event, elwt| {
-        println!("{event:?}");
 
         match event {
             Event::WindowEvent { event, window_id } if window_id == window.id() => match event {
@@ -25,13 +24,16 @@ fn main() -> Result<(), impl std::error::Error> {
                     // Notify the windowing system that we'll be presenting to the window.
                     window.pre_present_notify();
                 }
-                _ => (),
+                _ => {
+                    println!("Unhandled WindowEvent: {event:?}");
+                },
             },
             Event::AboutToWait => {
                 window.request_redraw();
             }
-
-            _ => (),
+            _ => {
+                println!("Unhandled Event: {event:?}");
+            },
         }
     })
 }
